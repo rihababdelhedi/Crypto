@@ -14,8 +14,8 @@ public class Main {
 		
 		MonoCipter icipter =new MonoCipter();
 		icipter.generateKey(new File("key.txt"));
-		icipter.encode(new File("message.txt"), new File("key.txt"), new File("encoded.txt"));
-		icipter.decode(new File("message.txt"), new File("key.txt"), new File("encoded.txt"));
+		//icipter.encode(new File("message.txt"), new File("key.txt"), new File("encoded.txt"));
+		//icipter.decode(new File("message.txt"), new File("key.txt"), new File("encoded.txt"));
 		
 
 	}
