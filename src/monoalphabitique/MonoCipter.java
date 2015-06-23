@@ -1,9 +1,15 @@
 package monoalphabitique;
 
+<<<<<<< HEAD
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+=======
+import java.awt.image.ConvolveOp;
+import java.util.ArrayList;
+>>>>>>> 87dd8d9bb5ef0ca2b792e124fe102bba905424bb
 import java.util.HashMap;
+import java.util.List;
 
 public class MonoCipter implements ICipter{
 
@@ -48,6 +54,7 @@ public class MonoCipter implements ICipter{
 
 	    @Override
 	    public String encode(String message, String key) {
+	    	
 	        HashMap<Character,Character> table = buildConversionTable(key, false);
 	        StringBuilder stringBuilder = new StringBuilder();
 
@@ -70,17 +77,36 @@ public class MonoCipter implements ICipter{
 	        return stringBuilder.toString();
 	    }
 	    
-	    
-	    public void writeFile(String filename, String message){
-	    	try{
-	    		File f = new File(filename);
-	    		//f.createNewFile();
-	    		FileWriter writer = new FileWriter(f);
-	    		writer.write(message);
-	    		writer.close();
+	    public int nbreFrequence(char caractere,String message)
+	    {
+	    	int nbre=0;
+	    	for(int i=0;i<message.length();i++)
+	    	{
+	    		if (message.charAt(i)==caractere)
+	    	     nbre++;
 	    	}
-	    	catch(IOException e){
-	    		e.printStackTrace();
-	    	}
+	    	return nbre ;
 	    }
+	    
+	    public HashMap<Character,Integer> FindFrequences (String message)
+	    {
+	    	 HashMap<Character,Integer> table = new HashMap<Character, Integer>();
+	    	for(int i=0;i<message.length();i++)
+	    	{
+	    	      table.put(message.charAt(i),nbreFrequence(message.charAt(i),message));
+	    	 
+	    	}
+	    	return table;
+	    }
+	 
+
+		@Override
+		public String findKey(String message, String crtypted) {
+			// TODO Auto-generated method stub
+			
+			
+			return null;
+		}
+	    
+>>>>>>> 87dd8d9bb5ef0ca2b792e124fe102bba905424bb
 }

@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.HashMap;
 
 import monoalphabitique.ICipter;
 import monoalphabitique.MonoCipter;
@@ -19,7 +20,15 @@ public class Main {
 	        m.writeFile("encoded.txt", s);
 	        System.out.println(s);
 	        System.out.println(m.decode(s, key));
+<<<<<<< HEAD
 	        m.writeFile("decoded.txt", m.decode(s,key));
+=======
+	        HashMap<Character, Integer> table =m.FindFrequences("ARRRRAJJJEE");
+	        HashMap<Character, Integer> tableencode =m.FindFrequences("EFFFFECCCTT");
+	        System.out.println(table);
+	        System.out.println(tableencode);
+
+>>>>>>> 87dd8d9bb5ef0ca2b792e124fe102bba905424bb
 	}
 
 }
