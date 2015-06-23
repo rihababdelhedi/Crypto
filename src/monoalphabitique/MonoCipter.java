@@ -9,7 +9,8 @@ public class MonoCipter implements ICipter{
 
 	
 	private static final String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
+	private static final String orderFrequencyAlaphabet = "EAISTNRULODMPCVQGBFJHZXYKW";
+	
 	    public String generateKey(){
 
 	        char[] charTable = alphabet.toCharArray();
