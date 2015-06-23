@@ -45,6 +45,7 @@ public class MonoCipter implements ICipter{
 
 	    @Override
 	    public String encode(String message, String key) {
+	    	
 	        HashMap<Character,Character> table = buildConversionTable(key, false);
 	        StringBuilder stringBuilder = new StringBuilder();
 
