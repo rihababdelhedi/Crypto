@@ -13,11 +13,13 @@ public class Main {
 		// TODO Auto-generated method stub
 		  MonoCipter m = new MonoCipter();
 	        String key = m.generateKey();
+	        m.writeFile("macle.txt", key);
 	        System.out.println(key);
 	        String s = m.encode("MONOALPHABITIQUE.", key);
+	        m.writeFile("encoded.txt", s);
 	        System.out.println(s);
 	        System.out.println(m.decode(s, key));
-
+	        m.writeFile("decoded.txt", m.decode(s,key));
 	}
 
 }

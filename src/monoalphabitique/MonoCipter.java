@@ -1,5 +1,8 @@
 package monoalphabitique;
 
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.HashMap;
 
 public class MonoCipter implements ICipter{
@@ -65,5 +68,19 @@ public class MonoCipter implements ICipter{
 	        }
 
 	        return stringBuilder.toString();
+	    }
+	    
+	    
+	    public void writeFile(String filename, String message){
+	    	try{
+	    		File f = new File(filename);
+	    		//f.createNewFile();
+	    		FileWriter writer = new FileWriter(f);
+	    		writer.write(message);
+	    		writer.close();
+	    	}
+	    	catch(IOException e){
+	    		e.printStackTrace();
+	    	}
 	    }
 }
