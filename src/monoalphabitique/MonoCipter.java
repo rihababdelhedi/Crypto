@@ -1,15 +1,9 @@
 package monoalphabitique;
 
-<<<<<<< HEAD
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-=======
-import java.awt.image.ConvolveOp;
-import java.util.ArrayList;
->>>>>>> 87dd8d9bb5ef0ca2b792e124fe102bba905424bb
 import java.util.HashMap;
-import java.util.List;
 
 public class MonoCipter implements ICipter{
 
@@ -107,6 +101,19 @@ public class MonoCipter implements ICipter{
 			
 			return null;
 		}
-	    
->>>>>>> 87dd8d9bb5ef0ca2b792e124fe102bba905424bb
+		
+		
+	    public void writeFile(String filename, String message){
+	    	try{
+	    		File f = new File(filename);
+	    		//f.createNewFile();
+	    		FileWriter writer = new FileWriter(f);
+	    		writer.write(message);
+	    		writer.close();
+	    	}
+	    	catch(IOException e){
+	    		e.printStackTrace();
+	    	}
+	    }
+	
 }
