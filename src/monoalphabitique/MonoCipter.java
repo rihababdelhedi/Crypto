@@ -1,6 +1,9 @@
 package monoalphabitique;
 
+import java.awt.image.ConvolveOp;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class MonoCipter implements ICipter{
 
@@ -67,4 +70,36 @@ public class MonoCipter implements ICipter{
 
 	        return stringBuilder.toString();
 	    }
+	    
+	    public int nbreFrequence(char caractere,String message)
+	    {
+	    	int nbre=0;
+	    	for(int i=0;i<message.length();i++)
+	    	{
+	    		if (message.charAt(i)==caractere)
+	    	     nbre++;
+	    	}
+	    	return nbre ;
+	    }
+	    
+	    public HashMap<Character,Integer> FindFrequences (String message)
+	    {
+	    	 HashMap<Character,Integer> table = new HashMap<Character, Integer>();
+	    	for(int i=0;i<message.length();i++)
+	    	{
+	    	      table.put(message.charAt(i),nbreFrequence(message.charAt(i),message));
+	    	 
+	    	}
+	    	return table;
+	    }
+	 
+
+		@Override
+		public String findKey(String message, String crtypted) {
+			// TODO Auto-generated method stub
+			
+			
+			return null;
+		}
+	    
 }

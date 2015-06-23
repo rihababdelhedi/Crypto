@@ -1,4 +1,5 @@
 import java.io.File;
+import java.util.HashMap;
 
 import monoalphabitique.ICipter;
 import monoalphabitique.MonoCipter;
@@ -17,6 +18,10 @@ public class Main {
 	        String s = m.encode("MONOALPHABITIQUE.", key);
 	        System.out.println(s);
 	        System.out.println(m.decode(s, key));
+	        HashMap<Character, Integer> table =m.FindFrequences("ARRRRAJJJEE");
+	        HashMap<Character, Integer> tableencode =m.FindFrequences("EFFFFECCCTT");
+	        System.out.println(table);
+	        System.out.println(tableencode);
 
 	}
 
