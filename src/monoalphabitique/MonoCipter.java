@@ -3,13 +3,61 @@ package monoalphabitique;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class MonoCipter implements ICipter{
 
 	
 	private static final String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	private static final String orderFrequencyAlaphabet = "EAISTNRULODMPCVQGBFJHZXYKW";
+	private static final String orderFrequencyAlaphabet = "ESAITNRULODCPMéVQFBGHJàXYèêZWçùKûïë";
+	//"EAISTNRULODMPCVQGBFJHZXYKW";
+
+    public  HashMap<Character, Float> tabFrequence = new HashMap<Character, Float>();
+    
+	public void generateFreqence()
+	{
+		tabFrequence.put('e', (float) 14.715);
+		tabFrequence.put('s', (float) 7.948);
+		tabFrequence.put('a', (float) 7.636);
+		tabFrequence.put('i', (float) 7.529);
+		tabFrequence.put('t', (float) 7.244);
+		tabFrequence.put('n', (float) 7.095);
+		tabFrequence.put('r', (float) 6.553);
+		tabFrequence.put('u', (float) 6.311);
+		tabFrequence.put('l', (float) 5.456);
+		tabFrequence.put('o', (float) 5.378);
+		tabFrequence.put('d', (float) 3.669);
+		tabFrequence.put('c', (float) 3.260);
+		tabFrequence.put('p', (float) 3.021);
+		tabFrequence.put('m', (float) 2.968);
+		tabFrequence.put('é', (float) 1.904);
+		tabFrequence.put('v', (float) 1.628);
+		tabFrequence.put('q', (float) 1.362);
+		tabFrequence.put('f', (float) 1.066);
+		tabFrequence.put('b', (float) 0.901);
+		tabFrequence.put('g', (float) 0.866);
+		tabFrequence.put('h', (float) 0.737);
+		tabFrequence.put('j', (float) 0.545);
+		tabFrequence.put('à', (float) 0.486);
+		tabFrequence.put('x', (float) 0.387);
+		tabFrequence.put('y', (float) 0.308);
+		tabFrequence.put('è', (float) 0.271);
+		tabFrequence.put('ê', (float) 0.225);
+		tabFrequence.put('z', (float) 0.136);
+		tabFrequence.put('w', (float) 0.114);
+		tabFrequence.put('ç', (float) 0.085);
+		tabFrequence.put('ù', (float) 0.058);
+		tabFrequence.put('k', (float) 0.049);
+		tabFrequence.put('û', (float) 0.045);
+		tabFrequence.put('ï', (float) 0.006);
+		tabFrequence.put('ë', (float) 0);
+		
+		
+	}
+	
 	
 	    public String generateKey(){
 

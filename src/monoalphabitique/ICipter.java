@@ -1,6 +1,7 @@
 package monoalphabitique;
 
 import java.io.File;
+import java.util.HashMap;
 
 public interface  ICipter {
 
