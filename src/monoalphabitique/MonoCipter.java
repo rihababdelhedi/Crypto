@@ -11,9 +11,8 @@ import java.util.TreeMap;
 public class MonoCipter implements ICipter{
 
 	
-	private static final String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-	private static final String orderFrequencyAlaphabet = "ESAITNRULODCPMéVQFBGHJàXYèêZWçùKûïë";
-	//"EAISTNRULODMPCVQGBFJHZXYKW";
+	private static final String alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ ";
+	private static final String orderFrequencyAlaphabet = " EAISTNRULODMPCVQGBFJHZXYKW".toUpperCase();
 
     public  HashMap<Character, Float> tabFrequence = new HashMap<Character, Float>();
     
@@ -33,7 +32,7 @@ public class MonoCipter implements ICipter{
 		tabFrequence.put('c', (float) 3.260);
 		tabFrequence.put('p', (float) 3.021);
 		tabFrequence.put('m', (float) 2.968);
-		tabFrequence.put('é', (float) 1.904);
+		tabFrequence.put('Ã©', (float) 1.904);
 		tabFrequence.put('v', (float) 1.628);
 		tabFrequence.put('q', (float) 1.362);
 		tabFrequence.put('f', (float) 1.066);
@@ -41,116 +40,121 @@ public class MonoCipter implements ICipter{
 		tabFrequence.put('g', (float) 0.866);
 		tabFrequence.put('h', (float) 0.737);
 		tabFrequence.put('j', (float) 0.545);
-		tabFrequence.put('à', (float) 0.486);
+		tabFrequence.put('Ã ', (float) 0.486);
 		tabFrequence.put('x', (float) 0.387);
 		tabFrequence.put('y', (float) 0.308);
-		tabFrequence.put('è', (float) 0.271);
-		tabFrequence.put('ê', (float) 0.225);
+		tabFrequence.put('Ã¨', (float) 0.271);
+		tabFrequence.put('Ãª', (float) 0.225);
 		tabFrequence.put('z', (float) 0.136);
 		tabFrequence.put('w', (float) 0.114);
-		tabFrequence.put('ç', (float) 0.085);
-		tabFrequence.put('ù', (float) 0.058);
+		tabFrequence.put('Ã§', (float) 0.085);
+		tabFrequence.put('Ã¹', (float) 0.058);
 		tabFrequence.put('k', (float) 0.049);
-		tabFrequence.put('û', (float) 0.045);
-		tabFrequence.put('ï', (float) 0.006);
-		tabFrequence.put('ë', (float) 0);
+		tabFrequence.put('Ã»', (float) 0.045);
+		tabFrequence.put('Ã¼', (float) 0.006);
+		tabFrequence.put('Ã«', (float) 0);
 		
 		
 	}
 	
 	
-	    public String generateKey(){
+    public String generateKey(){
 
-	        char[] charTable = alphabet.toCharArray();
-	        int currentIndex = charTable.length, randomIndex;
-	        char temporaryValue;
-
-
-	        while (0 != currentIndex) {
-
-	            randomIndex = (int) Math.floor(Math.random() * currentIndex);
-	            currentIndex -= 1;
-
-	            // And swap it with the current element.
-	            temporaryValue = charTable[currentIndex];
-	            charTable[currentIndex] = charTable[randomIndex];
-	            charTable[randomIndex] = temporaryValue;
-	        }
-
-	        return new String(charTable);
-	    }
-
-	    private HashMap<Character, Character> buildConversionTable(String key, boolean reverse){
-	    	// HaspMap valeur et leur key 
-	        HashMap<Character,Character> table = new HashMap<Character, Character>();
-	        for(int i=0 ; i < alphabet.length() ; i++){
-	        	// pour de décodage 
-	            if(reverse){
-	                table.put(key.charAt(i), alphabet.charAt(i));
-	            }else{
-	            	// encodage 
-	                table.put(alphabet.charAt(i), key.charAt(i));
-	            }
-	        }
-	        return table;
-	    }
-
-	    @Override
-	    public String encode(String message, String key) {
-	        HashMap<Character,Character> table = buildConversionTable(key, false);
-	        StringBuilder stringBuilder = new StringBuilder();
-
-	        for (int i = 0 ; i < message.length(); i++){
-	        	/*if(table.get(Character.toUpperCase(message.charAt(i))) == null)
-	        		System.out.println("=" + message.charAt(i)); */
-	            stringBuilder.append(table.get(Character.toUpperCase(message.charAt(i))));
-	        }
-
-	        return stringBuilder.toString();
-	    }
+        char[] charTable = alphabet.toCharArray();
+        int currentIndex = charTable.length, randomIndex;
+        char temporaryValue;
 
 
-	    @Override
-	    public String decode(String crypted, String key) {
-	        HashMap<Character,Character> table = buildConversionTable(key, true);
-	        StringBuilder stringBuilder = new StringBuilder();
+        while (0 != currentIndex) {
 
-	        for (int i = 0 ; i < crypted.length(); i++){
-	            stringBuilder.append(table.get(Character.toUpperCase(crypted.charAt(i))));
-	        }
+            randomIndex = (int) Math.floor(Math.random() * currentIndex);
+            currentIndex -= 1;
 
-	        return stringBuilder.toString();
-	    }
-	    
-	    public int nbreFrequence(char caractere,String message)
-	    {
-	    	int nbre=0;
-	    	for(int i=0;i<message.length();i++)
-	    	{
-	    		if (message.charAt(i)==caractere)
-	    	     nbre++;
-	    	}
-	    	return nbre ;
-	    }
-	    /*
-	    public HashMap<Character,Integer> FindFrequences (String message)
-	    {
-	    	 HashMap<Character,Integer> table = new HashMap<Character, Integer>();
-	    	for(int i=0;i<message.length();i++)
-	    	{
-	    	      table.put(message.charAt(i),nbreFrequence(message.charAt(i),message));
-	    	 
-	    	}
-	    	return table;
-	    } */
-	 
+            // And swap it with the current element.
+            temporaryValue = charTable[currentIndex];
+            charTable[currentIndex] = charTable[randomIndex];
+            charTable[randomIndex] = temporaryValue;
+            
+        }
 
-		@Override 
-    public HashMap<Character, Integer> findFrequency(String text) {
-    	HashMap<Character, Integer> map = new HashMap<Character, Integer>();
-    	for(int i=0 ; i < alphabet.length() ; i++){
-    		map.put(alphabet.charAt(i), new Integer(0));
+        for(int i = 0;i < charTable.length;i++) {
+        	System.out.println(alphabet.charAt(i) + " => " + charTable[i]);
+        }
+        
+        return new String(charTable);
+    }
+
+    private HashMap<Character, Character> buildConversionTable(String key, boolean reverse){
+    	// HaspMap valeur et leur key 
+        HashMap<Character,Character> table = new HashMap<Character, Character>();
+        for(int i=0 ; i < alphabet.length() ; i++){
+        	// pour de dï¿½codage 
+            if(reverse){
+                table.put(key.charAt(i), alphabet.charAt(i));
+            }else{
+            	// encodage 
+                table.put(alphabet.charAt(i), key.charAt(i));
+            }
+        }
+        return table;
+    }
+
+    @Override
+    public String encode(String message, String key) {
+        HashMap<Character,Character> table = buildConversionTable(key, false);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0 ; i < message.length(); i++){
+        	/*if(table.get(Character.toUpperCase(message.charAt(i))) == null)
+        		System.out.println("=" + message.charAt(i)); */
+            stringBuilder.append(table.get(Character.toUpperCase(message.charAt(i))));
+        }
+
+        return stringBuilder.toString();
+    }
+
+
+    @Override
+    public String decode(String crypted, String key) {
+        HashMap<Character,Character> table = buildConversionTable(key, true);
+        StringBuilder stringBuilder = new StringBuilder();
+
+        for (int i = 0 ; i < crypted.length(); i++){
+            stringBuilder.append(table.get(Character.toUpperCase(crypted.charAt(i))));
+        }
+
+        return stringBuilder.toString();
+    }
+    
+    public int nbreFrequence(char caractere,String message)
+    {
+    	int nbre=0;
+    	for(int i=0;i<message.length();i++)
+    	{
+    		if (message.charAt(i)==caractere)
+    	     nbre++;
     	}
+    	return nbre ;
+    }
+    /*
+    public HashMap<Character,Integer> FindFrequences (String message)
+    {
+    	 HashMap<Character,Integer> table = new HashMap<Character, Integer>();
+    	for(int i=0;i<message.length();i++)
+    	{
+    	      table.put(message.charAt(i),nbreFrequence(message.charAt(i),message));
+    	 
+    	}
+    	return table;
+    } */
+ 
+
+	@Override 
+	public HashMap<Character, Integer> findFrequency(String text) {
+		HashMap<Character, Integer> map = new HashMap<Character, Integer>();
+		for(int i=0 ; i < alphabet.length() ; i++){
+	    		map.put(alphabet.charAt(i), new Integer(0));
+	    }
     	
     	for(int i=0 ; i < text.length() ; i++){
     		Integer newValue = map.get(Character.toUpperCase(text.charAt(i))) + 1;
@@ -166,14 +170,18 @@ public class MonoCipter implements ICipter{
     	if(messageEncoded == null) {
     		return null;
     	}
-    		
+    	
+    	StringBuilder keyBuilder = new StringBuilder();
+    	
 		HashMap<Character, Integer> fqrInitialText = findFrequency(messageEncoded); // Frequency initial text
 		ValueComparator bvc =  new ValueComparator(fqrInitialText);
         TreeMap<Character,Integer> sorted_map = new TreeMap<Character,Integer>(bvc);
         sorted_map.putAll(fqrInitialText);
         
         int i = 0;
-        StringBuilder keyBuilder = new StringBuilder();
+        
+        HashMap<Character, Character> fqr = new HashMap<Character, Character>();
+        
         for(Map.Entry<Character,Integer> entry : sorted_map.entrySet()) {
         	Character keyEncoded = entry.getKey();
         	
@@ -182,11 +190,18 @@ public class MonoCipter implements ICipter{
         	
         	Character key = orderFrequencyAlaphabet.charAt(i);
         	
-        	keyBuilder.append(keyEncoded);
-        	System.out.println(key + " => " + keyEncoded);
+        	System.out.println(key + "=>" + keyEncoded);
+        	
+        	fqr.put(key, keyEncoded);
         	
         	i++;
         }
+		
+        System.out.println("----------------");
+        
+		for(int o = 0;o < alphabet.length();o++) {
+			keyBuilder.append(fqr.get(alphabet.charAt(o)));
+		}
 		
     	return keyBuilder.toString();
     }
@@ -204,6 +219,23 @@ public class MonoCipter implements ICipter{
                 return -1;
             } else {
                 return 1;
+            } // returning 0 would merge keys
+        }
+    }
+    
+    class ValueComparatorKey implements Comparator<Character> {
+
+        Map<Character, Character> base;
+        public ValueComparatorKey(Map<Character, Character> base) {
+            this.base = base;
+        }
+        
+        // Note: this comparator imposes orderings that are inconsistent with equals.    
+        public int compare(Character a, Character b) {
+            if (a >= b) {
+                return 1;
+            } else {
+                return -1;
             } // returning 0 would merge keys
         }
     }
